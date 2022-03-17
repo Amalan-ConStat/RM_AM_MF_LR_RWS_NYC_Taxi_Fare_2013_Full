@@ -1,5 +1,5 @@
 
-# RM_AM_MF_LR_RWS_NYC_Taxi_Fare_2013
+# RM_AM_MF_PR_RWS_NYC_Taxi_Fare_2013
 
 ### Real Model vs Assumed Model vs Model Free method for the Poisson Regression problems on Real World Subsampling methods 
 
