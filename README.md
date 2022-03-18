@@ -1,7 +1,7 @@
 
 # RS_OS_MR0S_PR_RWS_NYC_Taxi_Fare_2013
 
-### Real Model vs Assumed Model vs Model Free method for the Poisson Regression problems on Real World Subsampling methods 
+### Random Sampling vs Optimal Sub-sampling vs Model Robust Optimal Sub-sampling method for the Poisson Regression problems on Real World Subsampling methods 
 
 <!-- badges: start -->
 <!-- badges: end -->
