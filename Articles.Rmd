@@ -87,7 +87,7 @@ Combined_MSE<-do.call(rbind,Model_Data)
 
 Combined_MSE$Subsample_Size<-Combined_MSE$Subsample_Size-r0
 
-Combined_MSE[!(Combined_MSE$Subsample_Size %in% seq(200,200,100)),] %>%
+Combined_MSE[!(Combined_MSE$Subsample_Size %in% seq(100,100,100)),] %>%
   group_by(Metric,Model,Subsample_Size) %>%
   summarise(Sum_MSE=sum(`Estimated Values`,na.rm = TRUE)) %>%
   ggplot(.,aes(x=Subsample_Size,y=Sum_MSE,color=Model))+
