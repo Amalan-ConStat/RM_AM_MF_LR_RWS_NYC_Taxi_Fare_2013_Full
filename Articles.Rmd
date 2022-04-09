@@ -54,11 +54,11 @@ for (j in 1:length(All_Models))
   
   Final_Data_Identical_r0<-cbind(Metric="MSE",All_MSE)
   
-  Final_Data_Identical_r0$Model<-recode_factor(Final_Data_Identical_r0$Model,
-                                               'OSMAC mMSE'="Optimal Sub-sampling mMSE",
-                                               'OSMAC mVc'="Optimal Sub-sampling mVc",
-                                               'OSMAC mMSE Model Free'="Model Robust Optimal Sub-sampling mMSE",
-                                               'OSMAC mVc Model Free'="Model Robust Optimal Sub-sampling mVc")
+  Final_Data_Identical_r0$Model<-recode(Final_Data_Identical_r0$Model,
+                                        'OSMAC mMSE'="Optimal Sub-sampling mMSE",
+                                        'OSMAC mVc'="Optimal Sub-sampling mVc",
+                                        'OSMAC mMSE Model Free'="Model Robust Optimal Sub-sampling mMSE",
+                                        'OSMAC mVc Model Free'="Model Robust Optimal Sub-sampling mVc")
   
   # All Colors
   Selected_All<-c("Optimal Sub-sampling mMSE",
