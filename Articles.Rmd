@@ -105,6 +105,8 @@ Combined_MSE[!(Combined_MSE$Subsample_Size %in% seq(100,100,100)),] %>%
           axis.title.y = element_text(color = "black",face = "bold",size = 12),
           legend.position = "bottom")
 
+ggsave(filename = "RWA_PR_NYCTaxiMedData.pdf",dpi=300,width = 8,height = 6,units = "in")
+
 Combined_MSE[Combined_MSE$Model!="Random Sampling",] %>%
   group_by(Metric,Model,Subsample_Size) %>%
   summarise(Sum_MSE=sum(`Estimated Values`)) %>%
