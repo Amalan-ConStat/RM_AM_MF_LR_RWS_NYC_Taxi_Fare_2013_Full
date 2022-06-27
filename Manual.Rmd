@@ -1,6 +1,8 @@
 ---
 title: "Manual of comparing optimal subsampling with model robust optimal subsampling method for poisson regression (NYC Taxi Fare 2013 Data)"
-output: github_document
+output: 
+  html_document:
+      keep_md: yes
 ---
 
 ```{r setup, include=FALSE}
