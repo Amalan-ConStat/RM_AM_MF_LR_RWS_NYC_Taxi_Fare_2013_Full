@@ -16,6 +16,7 @@ library(linguisticsdown)
 library(viridis)
 library(compiler)
 library(ggpubr)
+library(parallel)
 
 # Cordeiro Bias Estimation ----
 Cordeiro<-function(XData,With_bias)
@@ -43,6 +44,7 @@ Full_Bias<-list()
 Full_VAR<-list()
 Full_EMSE<-list()
 Full_Info<-list()
+Full_Accuracy<-list()
 ```
 
 # Random Sampling
@@ -121,6 +123,30 @@ for (j in 1:length(All_Models))
   
   Full_EMSE[[j]]<-All_EMSE
   
+  Full_Data<-as.matrix(Original_Data[,colnames(Original_Data) %in% c("Y",All_Models[[j]]) ])
+  Parameter_Data<-as.matrix(Est_Parameter[,-1])
+  #Parameter<-Parameter_Data[1,]
+  
+  Predict_Poisson_Regression<-function(Parameter)
+  {
+    Estimates<-matrix(Parameter)
+    fitted_lambda<-exp(Full_Data[,-1]%*%Estimates)
+    return((mean(fitted_lambda - Full_Data[,1]))^2)
+  }
+  
+  cl <- makeCluster(8)
+  clusterExport (cl, varlist = c("Full_Data"),envir = environment())
+  Accuracy<-parApply(cl=cl,X=Parameter_Data,MARGIN = 1,FUN = Predict_Poisson_Regression)
+  #Accuracy<-apply(Parameter_Data,1,Predict_Poisson_Regression)
+  stopCluster(cl)
+  
+  Accuracy_Data<-cbind.data.frame("Subsample_Size"=Est_Parameter[,1],Accuracy)
+  Accuracy_Data<-Accuracy_Data %>% 
+    group_by(Subsample_Size) %>%
+    summarize(Average_Accuracy=mean(Accuracy))
+  
+  Full_Accuracy[[j]]<-Accuracy_Data
+  
   All_MSE %>%
     ggplot(.,aes(x=Subsample_Size,y=MSE))+geom_point()+
     geom_line()+scale_colour_viridis_d()+
@@ -151,7 +177,12 @@ for (j in 1:length(All_Models))
     theme_light()+xlab("Sub sample size")+
     ylab("EMSE")+ggtitle("EMSE Comparison")->p5
   
-  P_list[[j]]<-list(p1,p2,p3,p4,p5)
+  Accuracy_Data %>% 
+    ggplot(.,aes(x=Subsample_Size,y=Average_Accuracy))+geom_point()+
+    geom_line()+theme_light()+xlab("Sub sample size")+
+    ylab("Average MSE for Y")+ggtitle("Average MSE for Y Comparison")->p6
+  
+  P_list[[j]]<-list(p1,p2,p3,p4,p5,p6)
   
   ggarrange(plotlist = P_list[[j]],nrow = 1,common.legend = TRUE,legend="top")->Temp_Plot[[j]]
   
@@ -163,7 +194,7 @@ for (j in 1:length(All_Models))
 
 
 # Store the Results
-save(Full_MSE,Full_EMSE,Full_Bias,Full_VAR,Full_Info,
+save(Full_MSE,Full_EMSE,Full_Bias,Full_VAR,Full_Info,Full_Accuracy,
      file = here("Non_Identical_r0","Summary","Classical","Data","Efficiency",
                  "Random_Sampling.RData"))
 
