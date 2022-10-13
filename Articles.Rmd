@@ -124,14 +124,14 @@ Theme_special<-function()
 Combined_MSE[!(Combined_MSE$Subsample_Size %in% seq(100,100,100)),] %>%
   group_by(Metric,Model,Subsample_Size) %>%
   summarise(Sum_MSE=sum(`Estimated Values`,na.rm = TRUE)) %>%
-  ggplot(.,aes(x=Subsample_Size,y=Sum_MSE,color=Model))+
+  ggplot(.,aes(x=Subsample_Size,y=log(Sum_MSE),color=Model))+
   scale_x_continuous(labels =unique(Combined_MSE$Subsample_Size),
                        breaks =unique(Combined_MSE$Subsample_Size) )+
     geom_point(size=1.75)+geom_line(size=1)+
     scale_color_manual(values=Colors_All)+
     theme_light()+
     xlab("r")+
-    ylab("Summed SMSE")+expand_limits(y = 0)+
+    ylab("log(Summed SMSE)")+#expand_limits(y = 0)+
     scale_y_continuous(breaks = scales::pretty_breaks(n = length(unique(Combined_MSE$Subsample_Size))/2))+
     guides(colour = guide_legend(nrow = 2))+Theme_special()
 
@@ -140,28 +140,28 @@ ggsave(filename = "RWA_PR_NYCTaxiMedData.pdf",dpi=300,width = 8,height = 6,units
 Combined_MSE[Combined_MSE$Model!="Random Sampling",] %>%
   group_by(Metric,Model,Subsample_Size) %>%
   summarise(Sum_MSE=sum(`Estimated Values`)) %>%
-  ggplot(.,aes(x=Subsample_Size,y=Sum_MSE,color=Model))+
+  ggplot(.,aes(x=Subsample_Size,y=log(Sum_MSE),color=Model))+
   scale_x_continuous(labels =unique(Combined_MSE$Subsample_Size),
                        breaks =unique(Combined_MSE$Subsample_Size) )+
     geom_point(size=1.75)+geom_line(size=1)+
     scale_color_manual(values=Colors_All)+
     theme_light()+
     xlab("r")+
-    ylab("Summed SMSE")+expand_limits(y = 0)+
+    ylab("log(Summed SMSE)")+#expand_limits(y = 0)+
     scale_y_continuous(breaks = scales::pretty_breaks(n = length(unique(Combined_MSE$Subsample_Size))/2))+
     guides(colour = guide_legend(nrow = 2))+Theme_special()
 
 Combined_Accuracy[!(Combined_Accuracy$Subsample_Size %in% seq(100,100,100)),] %>%
   group_by(Metric,Model,Subsample_Size) %>%
   summarise(Sum_MSE=mean(`Estimated Values`,na.rm = TRUE)) %>%
-  ggplot(.,aes(x=Subsample_Size,y=Sum_MSE,color=Model))+
+  ggplot(.,aes(x=Subsample_Size,y=log(Sum_MSE),color=Model))+
   scale_x_continuous(labels =unique(Combined_Accuracy$Subsample_Size),
                        breaks =unique(Combined_Accuracy$Subsample_Size) )+
     geom_point(size=1.75)+geom_line(size=1)+
     scale_color_manual(values=Colors_All)+
     theme_light()+
     xlab("r")+
-    ylab("Average MSE for Y")+expand_limits(y = 0)+
+    ylab("log(Average MSE for Y)")+#expand_limits(y = 0)+
     scale_y_continuous(breaks = scales::pretty_breaks(n = length(unique(Combined_Accuracy$Subsample_Size))/2))+
     guides(colour = guide_legend(nrow = 2))+Theme_special()
 
@@ -170,14 +170,14 @@ ggsave(filename = "RWA_PR_NYCTaxiMedData_Accuracy.pdf",dpi=300,width = 8,height 
 Combined_Accuracy[Combined_Accuracy$Model!="Random Sampling",] %>%
   group_by(Metric,Model,Subsample_Size) %>%
   summarise(Sum_MSE=mean(`Estimated Values`)) %>%
-  ggplot(.,aes(x=Subsample_Size,y=Sum_MSE,color=Model))+
+  ggplot(.,aes(x=Subsample_Size,y=log(Sum_MSE),color=Model))+
   scale_x_continuous(labels =unique(Combined_Accuracy$Subsample_Size),
                        breaks =unique(Combined_Accuracy$Subsample_Size) )+
     geom_point(size=1.75)+geom_line(size=1)+
     scale_color_manual(values=Colors_All)+
     theme_light()+
     xlab("r")+
-    ylab("Average MSE for Y")+expand_limits(y = 0)+
+    ylab("log(Average MSE for Y)")+#expand_limits(y = 0)+
     scale_y_continuous(breaks = scales::pretty_breaks(n = length(unique(Combined_Accuracy$Subsample_Size))/2))+
     guides(colour = guide_legend(nrow = 2))+Theme_special()
 ```
