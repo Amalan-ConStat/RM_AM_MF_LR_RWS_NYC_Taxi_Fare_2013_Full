@@ -135,7 +135,8 @@ Combined_MSE[!(Combined_MSE$Subsample_Size %in% seq(100,100,100)),] %>%
     scale_y_continuous(breaks = scales::pretty_breaks(n = length(unique(Combined_MSE$Subsample_Size))/2))+
     guides(colour = guide_legend(nrow = 2))+Theme_special()
 
-ggsave(filename = "RWA_PR_NYCTaxiMedData.pdf",dpi=300,width = 8,height = 6,units = "in")
+#ggsave(filename = "RWA_PR_NYCTaxiMedData.pdf",dpi=300,width = 8,height = 6,units = "in")
+ggsave(filename = "RWA_PR_NYCTaxiMedData.eps",device="eps",dpi=300,width = 8,height = 6,units = "in")
 
 Combined_MSE[Combined_MSE$Model!="Random Sampling",] %>%
   group_by(Metric,Model,Subsample_Size) %>%
@@ -165,7 +166,8 @@ Combined_Accuracy[!(Combined_Accuracy$Subsample_Size %in% seq(100,100,100)),] %>
     scale_y_continuous(breaks = scales::pretty_breaks(n = length(unique(Combined_Accuracy$Subsample_Size))/2))+
     guides(colour = guide_legend(nrow = 2))+Theme_special()
 
-ggsave(filename = "RWA_PR_NYCTaxiMedData_Accuracy.pdf",dpi=300,width = 8,height = 6,units = "in")
+#ggsave(filename = "RWA_PR_NYCTaxiMedData_Accuracy.pdf",dpi=300,width = 8,height = 6,units = "in")
+ggsave(filename = "RWA_PR_NYCTaxiMedData_Accuracy.eps",device="eps",dpi=300,width = 8,height = 6,units = "in")
 
 Combined_Accuracy[Combined_Accuracy$Model!="Random Sampling",] %>%
   group_by(Metric,Model,Subsample_Size) %>%
