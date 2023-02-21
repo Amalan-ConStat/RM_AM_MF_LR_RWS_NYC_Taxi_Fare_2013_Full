@@ -168,9 +168,9 @@ Combined_MSE %>%
     scale_y_continuous(breaks = scales::pretty_breaks(n = length(unique(Combined_MSE$Subsample_Size))/2))+
     theme_bw()+Theme_special()+guides(colour = guide_legend(nrow = 2))
 
-ggsave(filename = here("Article_Plots","RWA_LR_ALL_SMSE_NYCTaxiFare2013Data.pdf"),
+ggsave(filename = here("Article_Plots","RWA_PR_ALL_SMSE_NYCTaxiFare2013Data.pdf"),
        dpi=300,width = 6*2,height = 6*2,units = "in")
-ggsave(filename = here("Article_Plots","RWA_LR_ALL_SMSE_NYCTaxiFare2013Data.eps"),
+ggsave(filename = here("Article_Plots","RWA_PR_ALL_SMSE_NYCTaxiFare2013Data.eps"),
        device="eps",dpi=300,width = 6*2,height = 6*2,units = "in")
 
 Combined_Accuracy %>%
@@ -186,9 +186,9 @@ Combined_Accuracy %>%
     scale_y_continuous(breaks = scales::pretty_breaks(n = length(unique(Combined_MSE$Subsample_Size))/2))+
     theme_bw()+Theme_special()+guides(colour = guide_legend(nrow = 2))
       
-ggsave(filename = here("Article_Plots","RWA_LR_ALL_Accuracy_NYCTaxiFare2013Data.pdf"),
+ggsave(filename = here("Article_Plots","RWA_PR_ALL_Accuracy_NYCTaxiFare2013Data.pdf"),
        dpi=300,width = 6*2,height = 6*2,units = "in")
-ggsave(filename = here("Article_Plots","RWA_LR_ALL_Accuracy_NYCTaxiFare2013Data.eps"),
+ggsave(filename = here("Article_Plots","RWA_PR_ALL_Accuracy_NYCTaxiFare2013Data.eps"),
        device="eps",dpi=300,width = 6*2,height = 6*2,units = "in")
 
 Combined_MSE %>%
@@ -205,9 +205,9 @@ Combined_MSE %>%
     scale_y_continuous(breaks = scales::pretty_breaks(n = length(unique(Combined_MSE$Subsample_Size))/2))+
     theme_bw()+Theme_special_1()+guides(colour = guide_legend(nrow = 2))
 
-ggsave(filename = here("Article_Plots","RWA_LR_SMSE_NYCTaxiFare2013Data.pdf"),
+ggsave(filename = here("Article_Plots","RWA_PR_SMSE_NYCTaxiFare2013Data.pdf"),
        dpi=300,width = 8,height = 6,units = "in")
-ggsave(filename = here("Article_Plots","RWA_LR_SMSE_NYCTaxiFare2013Data.eps"),
+ggsave(filename = here("Article_Plots","RWA_PR_SMSE_NYCTaxiFare2013Data.eps"),
        device="eps",dpi=300,width = 8,height = 6,units = "in")
 
 Combined_Accuracy %>%
@@ -224,9 +224,9 @@ Combined_Accuracy %>%
   scale_y_continuous(breaks = scales::pretty_breaks(n = length(unique(Combined_Accuracy$Subsample_Size))/2))+
   theme_bw()+Theme_special_1()+guides(colour = guide_legend(nrow = 2))
 
-ggsave(filename = here("Article_Plots","RWA_LR_Accuracy_NYCTaxiFare2013Data.pdf"),
+ggsave(filename = here("Article_Plots","RWA_PR_Accuracy_NYCTaxiFare2013Data.pdf"),
        dpi=300,width = 8,height = 6,units = "in")
-ggsave(filename = here("Article_Plots","RWA_LR_Accuracy_NYCTaxiFare2013Data.eps"),
+ggsave(filename = here("Article_Plots","RWA_PR_Accuracy_NYCTaxiFare2013Data.eps"),
        device="eps",dpi=300,width = 8,height = 6,units = "in")
 
 Combined_MSE %>%
@@ -244,7 +244,7 @@ Combined_MSE %>%
     scale_y_continuous(breaks = scales::pretty_breaks(n = length(unique(Combined_MSE$Subsample_Size))/2))+
     theme_bw()+Theme_special_1()+guides(colour = guide_legend(nrow = 2))
 
-ggsave(filename = here("Article_Plots","Poster_RWA_LR_NYCTaxiFare2013Data.eps"),
+ggsave(filename = here("Article_Plots","Poster_RWA_PR_NYCTaxiFare2013Data.eps"),
        device="eps",dpi=300,width = 8,height = 6,units = "in")
 ```
 
