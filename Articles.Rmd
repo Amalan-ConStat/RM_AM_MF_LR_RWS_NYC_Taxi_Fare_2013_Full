@@ -182,7 +182,7 @@ Combined_Accuracy %>%
     scale_linetype_manual(values=LineType_All)+
     scale_shape_manual(values=ShapeType_All)+
     facet_wrap(~Covariate,scales = "free_y",ncol = 2,labeller = label_parsed)+
-    xlab("r")+ylab("Accuracy of Y")+
+    xlab("r")+ylab("MSE of Y")+
     scale_y_continuous(breaks = scales::pretty_breaks(n = length(unique(Combined_MSE$Subsample_Size))/2))+
     theme_bw()+Theme_special()+guides(colour = guide_legend(nrow = 2))
       
@@ -213,14 +213,14 @@ ggsave(filename = here("Article_Plots","RWA_PR_SMSE_NYCTaxiFare2013Data.eps"),
 Combined_Accuracy %>%
   group_by(Metric,Method,Subsample_Size) %>%
   summarise(Sum_Accuracy=mean(`Estimated Values`)) %>%
-  ggplot(.,aes(x=Subsample_Size,y=Sum_Accuracy,color=Method,shape=Method,linetype=Method))+
+  ggplot(.,aes(x=Subsample_Size,y=log(Sum_Accuracy),color=Method,shape=Method,linetype=Method))+
   scale_x_continuous(labels =unique(Combined_Accuracy$Subsample_Size),
                      breaks =unique(Combined_Accuracy$Subsample_Size)) +
   geom_point(size=1.25)+geom_line(size=0.75)+
   scale_color_manual(values=Colors_All)+
   scale_linetype_manual(values=LineType_All)+
   scale_shape_manual(values=ShapeType_All)+
-  xlab("r")+ylab("Average Accuracy of Y")+
+  xlab("r")+ylab("log(Average MSE of Y)")+
   scale_y_continuous(breaks = scales::pretty_breaks(n = length(unique(Combined_Accuracy$Subsample_Size))/2))+
   theme_bw()+Theme_special_1()+guides(colour = guide_legend(nrow = 2))
 
