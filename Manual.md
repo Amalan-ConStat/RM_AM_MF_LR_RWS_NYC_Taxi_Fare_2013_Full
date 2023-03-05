@@ -19,9 +19,8 @@ output:
 
 * The sub-sampling methods applied in this study are 
 1. Random Sampling, 
-2. Rare event random sampling, 
-3. Optimal Sub-sampling (OSMAC), and
-4. Model Robust Optimal Sub-sampling (OSMAC_MF or OSMAC Model Free).
+2. Optimal Sub-sampling (OSMAC), and
+3. Model Robust Optimal Sub-sampling (OSMAC_MF or OSMAC Model Free).
 
 * A detailed description of all methods are explained in the Figure below.
 
@@ -53,7 +52,7 @@ output:
 
 * Contains the simulation setup for the above mentioned subsampling methods based on the variety of models for the Big data and Rscripts to smoothly transfer methods and respective data.  
 
-### 2.2.1 Classical/R_Scripts
+### 2.2.1 R_Scripts
 
 We need to transfer two forms of data,
 1. Big Data set and other information essential for the methods.
@@ -63,29 +62,25 @@ We need to transfer two forms of data,
 
 #### 2.2.1.1 Setup_Data.R
 
-* Data stored in **Generate_Big_Data** is transferred to **Classical/Analysis**.
+* Data stored in **Generate_Big_Data** is transferred to **Analysis**.
 
 #### 2.2.1.2 Random_Sampling_Setup.R
 
 * A setup for random sampling such that model parameters are estimated at each simulation and are applied for the big data. 
 
-#### 2.2.1.3 RE Random_Sampling_Setup.R
-
-* A setup for rare event random sampling such that model parameters are estimated at each simulation and are applied for the big data. 
-
-#### 2.2.1.4 OSMAC_Algorithm.R and OSMAC_Setup.R [Identical r0]
+#### 2.2.1.3 OSMAC_Algorithm.R and OSMAC_Setup.R [Identical r0]
 
 * The optimal sub-sampling, model robust optimal sub-sampling and a setup to apply these methods such that model parameters are estimated at each simulation and are applied for the big data.
 
-#### 2.2.1.5 OSMAC_Algorithm.R and OSMAC_Setup.R [Non Identical r0]
+#### 2.2.1.4 OSMAC_Algorithm.R and OSMAC_Setup.R [Non Identical r0]
 
 * The optimal sub-sampling and a setup to apply these methods such that model parameters are estimated at each simulation and are applied for the big data.
 
-#### 2.2.1.6 OSMAC_Algorithm_Model_Free.R and OSMAC_Model_Free_Setup.R [Non_Identical_r0]
+#### 2.2.1.5 OSMAC_Algorithm_Model_Free.R and OSMAC_Model_Free_Setup.R [Non_Identical_r0]
 
 * The model robust optimal sub-sampling and a setup to apply these methods such that model parameters are estimated at each simulation and are applied for the big data.
 
-## 2.2.2 Classical/Analysis
+## 2.2.2 Analysis
 
 Each model related covariate data is separately used on each subsampling method individually.
 
@@ -96,28 +91,21 @@ Each model related covariate data is separately used on each subsampling method 
 * **Simulation_Results_Random_Sampling.R** - R script to run the random sampling method over **Replicates** on the **Init.RData** from **Run_RandomSample.RData**.
 * **Results** - Results of the simulation are stored here according to each model as an Rdata file **Random_Sample_output_i.RData**, where **i=[1-Q]**. 
 
-#### 2.2.2.2 RE Random Sampling
-
-* **Init.RData** - data file containing the big data and initial information regarding the simulation.
-* **RE_RandomSample.RData** - RE Random sampling function for **Replicates**.
-* **Simulation_Results_RE_Random_Sampling.R** - R script to run the rare event random sampling method over **Replicates** on the **Init.RData** from **RE_RandomSample.RData**.
-* **Results** - Results of the simulation are stored here according to each model as an Rdata file **RE_Random_Sample_output_i.RData**, where **i=[1-Q]**.
-
-#### 2.2.2.3 OSMAC [Non Identical r0]
+#### 2.2.2.2 OSMAC [Non Identical r0]
 
 * **Init.RData** - data file containing the big data and initial information regarding the simulation.
 * **Run_OSMAC.RData** - Optimal sampling function for **Replicates**.
 * **Simulation_Results_OSMAC_Sampling.R** - R script to run the optimal sampling method over **Replicates** on the **Init.RData** from **Run_OSMAC.RData**.
 * **Results** - Results of the simulation are stored here according to each model as an Rdata file **OSMAC_output_i.RData**, where **i=[1-Q]**.  
 
-#### 2.2.2.4 OSMAC Model Free [Non Identical r0]
+#### 2.2.2.3 OSMAC Model Free [Non Identical r0]
 
 * **Init.RData** - data file containing the big data and initial information regarding the simulation.
 * **Run_OSMAC.RData** - model robust optimal sampling function for **Replicates**.
 * **Simulation_Results_OSMAC_Sampling.R** - R script to run the model robust optimal sampling method over **Replicates** on the **Init.RData** from **Run_OSMAC.RData**.
 * **Results** - Results of the simulation are stored here as a single Rdata file **OSMAC_MF_output_Full.RData**.
 
-#### 2.2.2.5 OSMAC [Identical r0]
+#### 2.2.2.4 OSMAC [Identical r0]
 
 * **Init.RData** - data file containing the big data and initial information regarding the simulation.
 * **Run_OSMAC.RData** - optimal sampling and model robust optimal sampling function for **Replicates**.
@@ -136,17 +124,17 @@ Each model related covariate data is separately used on each subsampling method 
 
 * Rmarkdown files are used to individually assess the sub-sampling methods through plots for estimated model parameters. 
 
-* **RE_and_Random_Sampling_and_OSMAC.R** - R script to summarise the results from the sub-sampling methods through the Rmarkdown files **Random_Sampling.Rmd**, **RE_Random_Sampling.Rmd**, **OSMAC_Method.Rmd** and **OSMAC_Model_Free_Method.Rmd**.
+* **Random_Sampling_and_OSMAC.R** - R script to summarise the results from the sub-sampling methods through the Rmarkdown files **Random_Sampling.Rmd**, **OSMAC_Method.Rmd** and **OSMAC_Model_Free_Method.Rmd**.
 
 * **OSMAC_Command.R** - R script to summarise the results from the optimal sub-sampling and model robust optimal sampling methods through the Rmarkdown file **OSMAC_Method.Rmd**.
 
-* **Summary_Rmarkdown.R** in the **Rmarkdown/Classical/Summary** folder compares the sub-sampling methods through Mean Squared Error through the **Best_Subsampling_Method.Rmd**.
+* **Summary_Rmarkdown.R** in the **Rmarkdown/Summary** folder compares the sub-sampling methods through Mean Squared Error through the **Best_Subsampling_Method.Rmd**.
 
 ## 2.5 htmloutputs
 
 ![](Images/htmloutputs.png)
 
-* Here, summaries from the Rmarkdown files **Random_Sampling.Rmd**, **RE_Random_Sampling.Rmd**, **OSMAC_Method.Rmd**(for Identical and Non Identical r0) and **OSMAC_Model_Free_Method.Rmd** (for Non Identical r0) are stored as html files.
+* Here, summaries from the Rmarkdown files **Random_Sampling.Rmd**, **OSMAC_Method.Rmd**(for Identical and Non Identical r0) and **OSMAC_Model_Free_Method.Rmd** (for Non Identical r0) are stored as html files.
 
 
 ## 2.6 Summary
@@ -155,14 +143,14 @@ Each model related covariate data is separately used on each subsampling method 
 
 * Here, summaries from the Rmarkdown files **Best_Subsampling_Method.Rmd** are stored as html files. 
 
-### 2.6.1 Summary/Classical/Data/Efficiency
+### 2.6.1 Summary/Data/Efficiency
 
-* When running the Rmarkdown files **Random_Sampling.Rmd**, **RE_Random_Sampling.Rmd**, **OSMAC_Method.Rmd** and **OSMAC_Model_Free_Method.Rmd** summary data (MSE) are stored here.
+* When running the Rmarkdown files **Random_Sampling.Rmd**, **OSMAC_Method.Rmd** and **OSMAC_Model_Free_Method.Rmd** summary data (MSE) are stored here.
 
-* Using these data files only summarising through the files in **Rmarkdown/Classical/Summary** occurs.
+* Using these data files only summarising through the files in **Rmarkdown/Summary** occurs.
 
 ## 2.7 Articles.Rmd, Publication.Rmd and Publication_Ready_Command.R
 
 * Use **Publication_Ready_command.R** to run **Publication.Rmd** on every model and its respective big data.
 
-* Use **Articles.Rmd** to generate plots relevant to the paper as pdf file **RWA_PR_NYCTaxiMedData.pdf**. 
+* Use **Articles.Rmd** to generate plots relevant to the paper as pdf file **Article_Plots/RWA_PR_NYCTaxiMedData.pdf**. 
